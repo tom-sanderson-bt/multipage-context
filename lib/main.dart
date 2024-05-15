@@ -1,10 +1,13 @@
 import 'package:bloc_context/counter/counter_cubit.dart';
+import 'package:bloc_context/observers/app_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'show_me_counter.dart';
 
 void main() {
+  Bloc.observer = AppObserver();
+
   runApp(const MyApp());
 }
 
@@ -17,6 +20,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _counterCubit = CounterCubit();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
