@@ -1,4 +1,4 @@
-import 'package:bloc_context/counter/counter_cubit.dart';
+import 'package:bloc_context/blocs/bloc/counter_bloc.dart';
 import 'package:bloc_context/observers/app_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _counterCubit = CounterCubit();
+  final _counterCubit = CounterBloc();
 
   @override
   void initState() {
@@ -76,7 +76,9 @@ class MyHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: BlocProvider.of<CounterCubit>(context).increment,
+              onPressed: () {
+                context.read<CounterBloc>().add(IncrementCounterEvent());
+              },
               child: const Text(
                 'Increment Counter',
                 style: TextStyle(fontSize: 20.0),

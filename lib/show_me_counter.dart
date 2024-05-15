@@ -1,4 +1,4 @@
-import 'package:bloc_context/counter/counter_cubit.dart';
+import 'package:bloc_context/blocs/bloc/counter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +11,7 @@ class ShowMeCounter extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Counter'),
       ),
-      body: BlocBuilder<CounterCubit, CounterState>(
+      body: BlocBuilder<CounterBloc, CounterState>(
         builder: (builderContext, state) {
           return Center(
             child: Text(
